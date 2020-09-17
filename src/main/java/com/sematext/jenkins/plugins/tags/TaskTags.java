@@ -1,5 +1,6 @@
 package com.sematext.jenkins.plugins.tags;
 
+import com.sematext.jenkins.plugins.utils.TagUtils;
 import hudson.model.Queue;
 
 import java.io.IOException;
@@ -27,7 +28,7 @@ public class TaskTags extends BaseTags {
 
   public Map<String, String> asTags() {
     Map<String, String> tags = super.asTags();
-    addTag(tags, "jenkins.task.name", getTaskName());
+    TagUtils.addTag(tags, "jenkins.task.name", getTaskName());
     return tags;
   }
 

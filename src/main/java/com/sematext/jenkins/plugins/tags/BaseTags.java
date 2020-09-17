@@ -147,12 +147,6 @@ public abstract class BaseTags {
     }
   }
 
-  public void addTag(Map<String, String> tags, String key, String value) {
-    if (value != null && key != null) {
-      tags.put(key, value);
-    }
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o)

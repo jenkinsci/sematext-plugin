@@ -1,5 +1,6 @@
 package com.sematext.jenkins.plugins.tags;
 
+import com.sematext.jenkins.plugins.utils.TagUtils;
 import hudson.EnvVars;
 import hudson.model.Run;
 import hudson.model.TaskListener;
@@ -80,9 +81,9 @@ public class JobTags extends BaseTags {
 
   public Map<String, String> asTags() {
     Map<String, String> tags = super.asTags();
-    addTag(tags, "jenkins.job.name", getJobName());
-    addTag(tags, "jenkins.repo.name", getRepoName());
-    addTag(tags, "jenkins.branch.name", getBranch());
+    TagUtils.addTag(tags, "jenkins.job.name", getJobName());
+    TagUtils.addTag(tags, "jenkins.repo.name", getRepoName());
+    TagUtils.addTag(tags, "jenkins.branch.name", getBranch());
     return tags;
   }
 

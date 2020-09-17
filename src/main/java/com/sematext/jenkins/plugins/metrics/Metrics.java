@@ -1,11 +1,16 @@
 package com.sematext.jenkins.plugins.metrics;
 
+import com.sematext.jenkins.plugins.utils.TagUtils;
+
+import java.util.AbstractMap;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public enum Metrics {
-  TOKEN_CHECK("token.check", "token ckeck", "Special metric we send from plugin when user click 'Test Token' button."),
+  TOKEN_CHECK("token.check", "token check", "Special metric we send from plugin when user click 'Test Token' button."),
 
   RUNS_UNKNOWN("runs.unknown", "runs unknown"),
   RUNS_SUCCESS("runs.success", "runs success"),
@@ -37,10 +42,23 @@ public enum Metrics {
   private final String key;
   private final String label;
   private final String description;
-  private final String type;
 
   private final static Map<String, Metrics> KEY_TO_METRIC = Arrays.stream(Metrics.values())
       .collect(Collectors.toMap(Metrics::getKey, metrics -> metrics));
+
+  public Map<String, String> asTags() {
+    Map<String, String> tags = new HashMap<>();
+    if (getLabel() != null) {
+      TagUtils.addTag(tags, "label", getLabel().replace(" ", "\\ "));
+    }
+    if (getDescription() != null) {
+      TagUtils.addTag(tags, "description", getDescription().replace(" ", "\\ "));
+    }
+    TagUtils.addTag(tags, "numericType", "long");
+    TagUtils.addTag(tags, "type", "counter");
+
+    return tags;
+  }
 
   public static Metrics fromKey(String key) {
     return KEY_TO_METRIC.get(key);
@@ -54,30 +72,21 @@ public enum Metrics {
     return description;
   }
 
-  public String getType() {
-    return type;
-  }
-
   public String getKey() {
     return key;
   }
 
   Metrics(String key) {
-    this(key, null, null, null);
+    this(key, null, null);
   }
 
   Metrics(String key, String label) {
-    this(key, label, null, null);
+    this(key, label, null);
   }
 
   Metrics(String key, String label, String description) {
-    this(key, label, description, null);
-  }
-
-  Metrics(String key, String label, String description, String type) {
     this.key = key;
     this.label = label;
     this.description = description;
-    this.type = type;
   }
 }

@@ -1,6 +1,7 @@
 package com.sematext.jenkins.plugins.client;
 
 import com.sematext.jenkins.plugins.SematextGlobalConfiguration;
+import com.sematext.jenkins.plugins.metrics.Metrics;
 import com.sematext.jenkins.plugins.utils.LogUtils;
 import hudson.ProxyConfiguration;
 import jenkins.model.Jenkins;
@@ -12,7 +13,9 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.Proxy;
 import java.net.URL;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
@@ -20,6 +23,7 @@ import java.util.stream.Collectors;
 public class SematextHttpClient {
   private static final String METRICS_RECEIVER_HEALTH_ENDPOINT = "health";
   private static final String METRICS_RECEIVER_ENDPOINT = "write?db=metrics";
+  private static final String METRICS_RECEIVER_META_INFO_ENDPOINT = "write?db=metainfo";
   private static final int TIMEOUT_MS = 60 * 1000;
   private static SematextHttpClient instance = null;
   private static final Logger logger = Logger.getLogger(SematextHttpClient.class.getName());
@@ -54,13 +58,26 @@ public class SematextHttpClient {
     return instance;
   }
 
+  public boolean postMetaInfo(List<Metrics> metrics) {
+    if (!connectionValid) {
+      logger.severe("Your client is not initialized properly");
+      return false;
+    }
+
+    List<String> metaInfoLines = metrics.stream()
+        .map(m -> buildMetricsMetaInfoLine(metricsToken, m.asTags(), m.getKey())).collect(Collectors.toList());
+
+    return post(buildEndpoint(metricsReceiverUrl, METRICS_RECEIVER_META_INFO_ENDPOINT),
+        String.join("\n", metaInfoLines));
+  }
+
   public boolean postMetrics(Map<String, String> tags, Map<String, Object> metrics) {
     if (!connectionValid) {
       logger.severe("Your client is not initialized properly");
       return false;
     }
 
-    String payload = buildInfluxLine(metricsToken, tags, metrics);
+    String payload = buildMetricsLine(metricsToken, tags, metrics);
 
     return post(buildEndpoint(metricsReceiverUrl, METRICS_RECEIVER_ENDPOINT), payload);
   }
@@ -105,6 +122,7 @@ public class SematextHttpClient {
       BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream(), "utf-8"));
       rd.close();
       if (conn.getResponseCode() == HttpURLConnection.HTTP_NO_CONTENT ||
+          conn.getResponseCode() == HttpURLConnection.HTTP_ACCEPTED ||
           conn.getResponseCode() == HttpURLConnection.HTTP_OK) {
         logger.fine(String.format("API call with payload '%s' was sent successfully!", payload));
       } else {
@@ -135,13 +153,19 @@ public class SematextHttpClient {
     return url + "/" + endpoint;
   }
 
-  private static String buildInfluxLine(String token, Map<String, String> tags, Map<String, Object> metrics) {
+  private static String buildMetricsLine(String token, Map<String, String> tags, Map<String, Object> metrics) {
     Map<String, String> fullTags = tags != null ? tags : new HashMap<>();
     fullTags.put("token", token);
-    return String.format("jenkins,%s %s", mapToInfluxString(fullTags), mapToInfluxString(metrics));
+    return String.format("jenkins,%s %s", toString(fullTags), toString(metrics));
   }
 
-  private static String mapToInfluxString(Map<String, ? extends Object> tags) {
+  private static String buildMetricsMetaInfoLine(String token, Map<String, String> tags, String metricKey) {
+    Map<String, String> fullTags = tags != null ? tags : new HashMap<>();
+    fullTags.put("token", token);
+    return String.format("jenkins,%s %s", toString(fullTags), metricKey);
+  }
+
+  private static String toString(Map<String, ? extends Object> tags) {
     return tags == null ? "" : tags.entrySet().stream().map(t -> t.getKey() + "=" + t.getValue()).collect(
         Collectors.joining(","));
   }
