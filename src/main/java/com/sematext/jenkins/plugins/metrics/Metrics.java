@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public enum Metrics {
-  TOKEN_CHECK("token.check", "token ckeck", "Special metric we send from plugin when user click 'Test Token' button"),
+  TOKEN_CHECK("token.check", "token ckeck", "Special metric we send from plugin when user click 'Test Token' button."),
 
   RUNS_UNKNOWN("runs.unknown", "runs unknown"),
   RUNS_SUCCESS("runs.success", "runs success"),
