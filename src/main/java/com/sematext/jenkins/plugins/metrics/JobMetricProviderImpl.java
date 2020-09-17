@@ -60,7 +60,7 @@ public class JobMetricProviderImpl extends MetricProvider {
           return;
         }
 
-        String runResult = String.valueOf(run.getResult()).toLowerCase(Locale.ENGLISH).replace("_", ".");
+        String runResult = String.valueOf(run.getResult()).toLowerCase(Locale.ENGLISH);
 
         Metrics runResultMetric = Metrics.fromKey(RUNS_PREFIX + runResult);
 

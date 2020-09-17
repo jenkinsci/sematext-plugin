@@ -11,7 +11,7 @@ public enum Metrics {
   RUNS_SUCCESS("runs.success", "runs success"),
   RUNS_UNSTABLE("runs.unstable", "runs unstable"),
   RUNS_FAILURE("runs.failure", "runs failure"),
-  RUNS_NOT_BUILT("runs.not.built", "runs not built"),
+  RUNS_NOT_BUILT("runs.not_built", "runs not built"),
   RUNS_ABORTED("runs.aborted", "runs aborted"),
 
   JOBS("jobs", "jobs"),
