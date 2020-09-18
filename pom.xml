@@ -19,6 +19,7 @@
         <jenkins.version>2.235.1</jenkins.version>
         <java.level>8</java.level>
         <jenkins.metrics.version>4.0.2.6</jenkins.metrics.version>
+        <jenkins.jackson2-api.version>2.11.2</jenkins.jackson2-api.version>
     </properties>
 
     <dependencyManagement>
@@ -56,6 +57,17 @@
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>metrics</artifactId>
             <version>${jenkins.metrics.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.jenkins-ci.plugins</groupId>
+                    <artifactId>jackson2-api</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.jenkins-ci.plugins</groupId>
+            <artifactId>jackson2-api</artifactId>
+            <version>${jenkins.jackson2-api.version}</version>
         </dependency>
         <dependency>
             <groupId>io.dropwizard.metrics</groupId>
