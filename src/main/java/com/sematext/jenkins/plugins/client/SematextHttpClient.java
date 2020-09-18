@@ -68,7 +68,7 @@ public class SematextHttpClient {
         .map(m -> buildMetricsMetaInfoLine(metricsToken, m.asTags(), m.getKey())).collect(Collectors.toList());
 
     return post(buildEndpoint(metricsReceiverUrl, METRICS_RECEIVER_META_INFO_ENDPOINT),
-        String.join("\n", metaInfoLines));
+        String.join(System.lineSeparator(), metaInfoLines));
   }
 
   public boolean postMetrics(Map<String, String> tags, Map<String, Object> metrics) {
