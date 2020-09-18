@@ -25,6 +25,7 @@ public class SematextHttpClient {
   private static final String METRICS_RECEIVER_ENDPOINT = "write?db=metrics";
   private static final String METRICS_RECEIVER_META_INFO_ENDPOINT = "write?db=metainfo";
   private static final int TIMEOUT_MS = 60 * 1000;
+  public static final String LINE_DELIMITER = "\n";
   private static SematextHttpClient instance = null;
   private static final Logger logger = Logger.getLogger(SematextHttpClient.class.getName());
 
@@ -68,7 +69,7 @@ public class SematextHttpClient {
         .map(m -> buildMetricsMetaInfoLine(metricsToken, m.asTags(), m.getKey())).collect(Collectors.toList());
 
     return post(buildEndpoint(metricsReceiverUrl, METRICS_RECEIVER_META_INFO_ENDPOINT),
-        String.join(System.lineSeparator(), metaInfoLines));
+        String.join(LINE_DELIMITER, metaInfoLines));
   }
 
   public boolean postMetrics(Map<String, String> tags, Map<String, Object> metrics) {
