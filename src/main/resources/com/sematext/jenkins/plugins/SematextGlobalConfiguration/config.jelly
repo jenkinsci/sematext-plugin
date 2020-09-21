@@ -13,14 +13,14 @@
     so it should be straightforward to find them.
   -->
   <f:section title="Sematext Plugin">
-      <f:radioBlock title="Use North America as data house at Sematext" name="removeme_dataHouse" value="US" checked="${instance.getDataHouse().equals('US')}" inline="true">
+      <f:radioBlock title="Use Sematext’s North American Region to house data" name="removeme_dataHouse" value="US" checked="${instance.getDataHouse().equals('US')}" inline="true">
       </f:radioBlock>
 
-      <f:radioBlock title="Use Europe as data house at Sematext" name="removeme_dataHouse" value="EU" checked="${instance.getDataHouse().equals('EU')}" inline="true" >
+      <f:radioBlock title="Use Sematext’s European Region to house data" name="removeme_dataHouse" value="EU" checked="${instance.getDataHouse().equals('EU')}" inline="true" >
        </f:radioBlock>
 
-      <f:radioBlock title="Use Custom URL to send data to" name="removeme_dataHouse" value="CUSTOM" checked="${instance.getDataHouse().equals('CUSTOM')}" inline="true" >
-        <f:entry title="Sematext Metrics Receiver URL" field="metricsReceiverUrl" >
+      <f:radioBlock title="Send data to a custom URL" name="removeme_dataHouse" value="CUSTOM" checked="${instance.getDataHouse().equals('CUSTOM')}" inline="true" >
+        <f:entry title="Sematext Jenkins App Receiver URL" field="metricsReceiverUrl" >
           <f:textbox field="metricsReceiverUrl" />
           <f:validateButton title="${%Test URL}" progress="${%Testing...}" method="testMetricsReceiverUrl" with="dataHouse,metricsReceiverUrl" checkMethod="post" />
         </f:entry>

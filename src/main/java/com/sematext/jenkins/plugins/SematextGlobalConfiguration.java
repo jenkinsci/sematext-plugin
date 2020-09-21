@@ -52,7 +52,7 @@ public class SematextGlobalConfiguration extends GlobalConfiguration {
       if (urlCheckResult) {
         return FormValidation.ok("Great! Your URL is valid.");
       } else {
-        return FormValidation.error("Your URL seems to be invalid.");
+        return FormValidation.error("Oops! Your URL does not seem to be valid.");
       }
     } catch (IllegalStateException e) {
       return FormValidation.error(e.getMessage());
@@ -64,7 +64,7 @@ public class SematextGlobalConfiguration extends GlobalConfiguration {
   public FormValidation doTest(@QueryParameter("metricsReceiverUrl") final String metricsReceiverUrl,
       @QueryParameter("metricsToken") final String metricsToken, @QueryParameter("dataHouse") final String dataHouse) {
     if (metricsToken.length() != 36) {
-      return FormValidation.error("Your TOKEN must be 36 character length.");
+      return FormValidation.error("Your TOKEN must have 36 characters.");
     }
 
     FormValidation metricsReceiverTestResult = doTestMetricsReceiverUrl(metricsReceiverUrl, dataHouse);
@@ -81,7 +81,7 @@ public class SematextGlobalConfiguration extends GlobalConfiguration {
       if (tokenCheckResult) {
         return FormValidation.ok("Great! Your TOKEN is valid.");
       } else {
-        return FormValidation.error("Your TOKEN seems to be invalid.");
+        return FormValidation.error("Your TOKEN does not seem to be valid.");
       }
     } catch (IllegalStateException e) {
       return FormValidation.error(e.getMessage());
@@ -132,11 +132,11 @@ public class SematextGlobalConfiguration extends GlobalConfiguration {
     }
     if (dataHouse.equals("CUSTOM")) {
       if (metricsReceiverUrl.length() == 0) {
-        throw new IllegalStateException("Custom URL can't be empty");
+        throw new IllegalStateException("Please add a custom URL...");
       }
       return metricsReceiverUrl;
     }
-    throw new IllegalStateException("Select any valid Sematext data house or input Custom URL");
+    throw new IllegalStateException("Select any valid Sematext Region or input a custom URL...");
   }
 
   public String getMetricsToken() {
