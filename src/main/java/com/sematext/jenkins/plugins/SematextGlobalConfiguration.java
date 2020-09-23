@@ -27,9 +27,6 @@ public class SematextGlobalConfiguration extends GlobalConfiguration {
 
   private static final String METRICS_RECEIVER_US_URL = "https://spm-receiver.sematext.com";
   private static final String METRICS_RECEIVER_EU_URL = "https://spm-receiver.eu.sematext.com";
-  private static final String DATA_HOUSE = "dataHouse";
-  private static final String METRICS_RECEIVER_URL = "metricsReceiverUrl";
-  private static final String METRICS_TOKEN = "metricsToken";
 
   private String dataHouse = "US";
   private Secret metricsToken = null;
@@ -102,11 +99,9 @@ public class SematextGlobalConfiguration extends GlobalConfiguration {
         return false;
       }
 
-      String dataHouse = formData.getString(DATA_HOUSE);
-      String metricsReceiverUrl = formData.getString(METRICS_RECEIVER_URL);
-      String metricsToken = formData.getString(METRICS_TOKEN);
       String metricsReceiver = buildMetricsReceiverUrl(metricsReceiverUrl, dataHouse);
-      SematextHttpClient.initInstance(metricsReceiver, metricsToken);
+
+      SematextHttpClient.initInstance(metricsReceiver, metricsToken.getPlainText());
 
       save();
       return true;
