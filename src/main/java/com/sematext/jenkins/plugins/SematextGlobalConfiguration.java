@@ -6,6 +6,7 @@ import com.sematext.jenkins.plugins.utils.LogUtils;
 import hudson.Extension;
 import hudson.model.Descriptor;
 import hudson.util.FormValidation;
+import hudson.util.Secret;
 import jenkins.model.GlobalConfiguration;
 import jenkins.model.Jenkins;
 import net.sf.json.JSONObject;
@@ -26,12 +27,9 @@ public class SematextGlobalConfiguration extends GlobalConfiguration {
 
   private static final String METRICS_RECEIVER_US_URL = "https://spm-receiver.sematext.com";
   private static final String METRICS_RECEIVER_EU_URL = "https://spm-receiver.eu.sematext.com";
-  private static final String DATA_HOUSE = "dataHouse";
-  private static final String METRICS_RECEIVER_URL = "metricsReceiverUrl";
-  private static final String METRICS_TOKEN = "metricsToken";
 
   private String dataHouse = "US";
-  private String metricsToken = null;
+  private Secret metricsToken = null;
   private String metricsReceiverUrl = null;
 
   public SematextGlobalConfiguration() {
@@ -46,6 +44,7 @@ public class SematextGlobalConfiguration extends GlobalConfiguration {
   @RequirePOST
   public FormValidation doTestMetricsReceiverUrl(@QueryParameter("metricsReceiverUrl") final String metricsReceiverUrl,
       @QueryParameter("dataHouse") final String dataHouse) {
+    Jenkins.get().checkPermission(Jenkins.ADMINISTER);
     try {
       String url = buildMetricsReceiverUrl(metricsReceiverUrl, dataHouse);
       boolean urlCheckResult = SematextHttpClient.checkHealth(url);
@@ -57,12 +56,12 @@ public class SematextGlobalConfiguration extends GlobalConfiguration {
     } catch (IllegalStateException e) {
       return FormValidation.error(e.getMessage());
     }
-
   }
 
   @RequirePOST
   public FormValidation doTest(@QueryParameter("metricsReceiverUrl") final String metricsReceiverUrl,
       @QueryParameter("metricsToken") final String metricsToken, @QueryParameter("dataHouse") final String dataHouse) {
+    Jenkins.get().checkPermission(Jenkins.ADMINISTER);
     if (metricsToken.length() != 36) {
       return FormValidation.error("Your TOKEN must have 36 characters.");
     }
@@ -100,11 +99,9 @@ public class SematextGlobalConfiguration extends GlobalConfiguration {
         return false;
       }
 
-      String dataHouse = formData.getString(DATA_HOUSE);
-      String metricsReceiverUrl = formData.getString(METRICS_RECEIVER_URL);
-      String metricsToken = formData.getString(METRICS_TOKEN);
       String metricsReceiver = buildMetricsReceiverUrl(metricsReceiverUrl, dataHouse);
-      SematextHttpClient.initInstance(metricsReceiver, metricsToken);
+
+      SematextHttpClient.initInstance(metricsReceiver, metricsToken.getPlainText());
 
       save();
       return true;
@@ -139,12 +136,12 @@ public class SematextGlobalConfiguration extends GlobalConfiguration {
     throw new IllegalStateException("Select any valid Sematext Region or input a custom URL...");
   }
 
-  public String getMetricsToken() {
+  public Secret getMetricsToken() {
     return metricsToken;
   }
 
   @DataBoundSetter
-  public void setMetricsToken(String metricsToken) {
+  public void setMetricsToken(Secret metricsToken) {
     this.metricsToken = metricsToken;
   }
 
