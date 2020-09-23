@@ -43,7 +43,7 @@ public class SematextHttpClient {
     // no need to use lazy double check, 2 initialization is ok too
     if (instance == null) {
       SematextGlobalConfiguration configuration = SematextGlobalConfiguration.get();
-      instance = newInstance(configuration.buildMetricsReceiverUrl(), configuration.getMetricsToken());
+      instance = newInstance(configuration.buildMetricsReceiverUrl(), configuration.getMetricsToken().getEncryptedValue());
     }
 
     return instance;
