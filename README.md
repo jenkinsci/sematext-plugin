@@ -1,6 +1,6 @@
 # Jenkins Sematext Plugin
 
-A Jenkins plugin for automatically forwarding metrics to a Sematext account.
+A Jenkins plugin for monitoring Jenkins with [Sematext](https://sematext.com/).
 
 ![Jenkins Sematext Dashboard][3]
 
@@ -22,20 +22,19 @@ This plugin can be installed from the [Update Center][2] (found at `Manage Jenki
 
 #### Plugin user interface
 
-To configure your Sematext Plugin, navigate to the `Manage Jenkins -> Configure System` page on your Jenkins installation. Once there, scroll down to find the `Sematext Plugin` section:
+To configure your Sematext Plugin, navigate to the `Manage Jenkins -> Configure System` page in your Jenkins installation. Once there, scroll down to find the `Sematext Plugin` section:
 
 ##### Select Region to house your data 
 
-1. Select the radio button with **Sematext Region which you will use to house your data** (depends on which Region you created Sematext Jenkins App).
-2. (advanced) Paste your Receiver URL in the `Sematext Jenkins App Receiver URL`.  Test your Receiver URL by using the `Test URL` button
-3. Paste your App Token in the `Sematext Jenkins App Token` textbox on the Jenkins configuration screen.
+1. Select the radio button with **Sematext Region which you will use to house your data**. Which Region you specify here depends on the Region in which you created the Sematext Jenkins App - US or EU.
+2. (advanced) Paste your Receiver URL in the `Sematext Jenkins App Receiver URL`.  You can find the Receiver URL in the integration instructions for your Jenkins App in Sematext.  Test your Receiver URL by using the `Test URL` button.
+3. Paste your App Token, also found in the intgration instructions for your Jenkins App in Sematext, in the `Sematext Jenkins App Token` textbox on the Jenkins configuration screen.
 4. Test your Sematext Jenkins App Token by using the `Test App Token` button on the Jenkins configuration screen directly below the App Token textbox.
-
 5. Save your configuration.
 
 ## Data collected
 
-This plugin is collecting the following [metrics](#metrics):
+This plugin collects the following [metrics](#metrics):
 
 ### Metrics
 
@@ -48,7 +47,7 @@ This plugin is collecting the following [metrics](#metrics):
 | `jenkins.runs.aborted`                 | Number of aborted job runs.                                               | `os.host`, `jenkins.job.name`,`jenkins.repo.name`, `jenkins.branch.name` |
 | `jenkins.jobs`                         | Number of jobs.                                                           | `os.host`, `jenkins.job.name`,`jenkins.repo.name`, `jenkins.branch.name` |
 | `jenkins.jobs.scheduled`               | The count at which jobs are scheduled. If a job is already in the queue and an identical request for scheduling the job is received then Jenkins will coalesce the two requests. This metric gives a reasonably pure measure of the load requirements of the Jenkins master as it is unaffected by the number of executors available to the system.                                                                                                                                                       | `os.host`, `jenkins.job.name`,`jenkins.repo.name`, `jenkins.branch.name` |
-| `jenkins.jobs.queuing`                 | The count of jobs which are queued.                                       | `os.host`, `jenkins.job.name`,`jenkins.repo.name`, `jenkins.branch.name` |
+| `jenkins.jobs.queuing`                 | The count of queued jobs.                                       | `os.host`, `jenkins.job.name`,`jenkins.repo.name`, `jenkins.branch.name` |
 | `jenkins.jobs.blocked`                 | The count at which jobs in the build queue enter the blocked state.       | `os.host`, `jenkins.job.name`,`jenkins.repo.name`, `jenkins.branch.name` |
 | `jenkins.jobs.buildable`               | The count at which jobs in the build queue enter the buildable state.     | `os.host`, `jenkins.job.name`,`jenkins.repo.name`, `jenkins.branch.name` |
 | `jenkins.jobs.waiting`                 | The count at which jobs enter the quiet period.                           | `os.host`, `jenkins.job.name`,`jenkins.repo.name`, `jenkins.branch.name` |
