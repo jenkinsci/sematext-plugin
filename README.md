@@ -26,7 +26,7 @@ To configure your Sematext Plugin, navigate to the `Manage Jenkins -> Configure 
 
 ##### Select Region to house your data 
 
-1. Select the radio button with **Sematext Region which you will use to house your data** (Depends on which Region you created Sematext Jenkins App).
+1. Select the radio button with **Sematext Region which you will use to house your data** (depends on which Region you created Sematext Jenkins App).
 2. (advanced) Paste your Receiver URL in the `Sematext Jenkins App Receiver URL`.  Test your Receiver URL by using the `Test URL` button
 3. Paste your App Token in the `Sematext Jenkins App Token` textbox on the Jenkins configuration screen.
 4. Test your Sematext Jenkins App Token by using the `Test App Token` button on the Jenkins configuration screen directly below the App Token textbox.
@@ -39,9 +39,25 @@ This plugin is collecting the following [metrics](#metrics):
 
 ### Metrics
 
-| Metric Name                            | Description                                                    | Tags                                                                     |
-|----------------------------------------|----------------------------------------------------------------|--------------------------------------------------------------------------|
-| `jenkins.runs.success`      | Number of success job runs .                                              | `os.host`, `jenkins.job.name`,`jenkins.repo.name`, `jenkins.branch.name` |
+| Metric Name                            | Description                                                               | Tags                                                                     |
+|----------------------------------------|---------------------------------------------------------------------------|--------------------------------------------------------------------------|
+| `jenkins.runs.success`                 | Number of success job runs.                                               | `os.host`, `jenkins.job.name`,`jenkins.repo.name`, `jenkins.branch.name` |
+| `jenkins.runs.unstable`                | Number of unstable job runs.                                              | `os.host`, `jenkins.job.name`,`jenkins.repo.name`, `jenkins.branch.name` |
+| `jenkins.runs.failure`                 | Number of failure job runs.                                               | `os.host`, `jenkins.job.name`,`jenkins.repo.name`, `jenkins.branch.name` |
+| `jenkins.runs.not_built`               | Number of not build job runs.                                             | `os.host`, `jenkins.job.name`,`jenkins.repo.name`, `jenkins.branch.name` |
+| `jenkins.runs.aborted`                 | Number of aborted job runs.                                               | `os.host`, `jenkins.job.name`,`jenkins.repo.name`, `jenkins.branch.name` |
+| `jenkins.jobs`                         | Number of jobs.                                                           | `os.host`, `jenkins.job.name`,`jenkins.repo.name`, `jenkins.branch.name` |
+| `jenkins.jobs.scheduled`               | The count at which jobs are scheduled. If a job is already in the queue and an identical request for scheduling the job is received then Jenkins will coalesce the two requests. This metric gives a reasonably pure measure of the load requirements of the Jenkins master as it is unaffected by the number of executors available to the system.                                                                                                                                                       | `os.host`, `jenkins.job.name`,`jenkins.repo.name`, `jenkins.branch.name` |
+| `jenkins.jobs.queuing`                 | The count of jobs which are queued.                                       | `os.host`, `jenkins.job.name`,`jenkins.repo.name`, `jenkins.branch.name` |
+| `jenkins.jobs.blocked`                 | The count at which jobs in the build queue enter the blocked state.       | `os.host`, `jenkins.job.name`,`jenkins.repo.name`, `jenkins.branch.name` |
+| `jenkins.jobs.buildable`               | The count at which jobs in the build queue enter the buildable state.     | `os.host`, `jenkins.job.name`,`jenkins.repo.name`, `jenkins.branch.name` |
+| `jenkins.jobs.waiting`                 | The count at which jobs enter the quiet period.                           | `os.host`, `jenkins.job.name`,`jenkins.repo.name`, `jenkins.branch.name` |
+| `jenkins.jobs.execution.time`          | The amount of time jobs spend in execution state.                         | `os.host`, `jenkins.job.name`,`jenkins.repo.name`, `jenkins.branch.name` |
+| `jenkins.jobs.queuing.time`            | The total time jobs spend in the build queue.                             | `os.host`, `jenkins.job.name`,`jenkins.repo.name`, `jenkins.branch.name` |
+| `jenkins.jobs.blocked.time`            | The amount of time jobs in the build queue enter spend in blocked state.  | `os.host`, `jenkins.job.name`,`jenkins.repo.name`, `jenkins.branch.name` |
+| `jenkins.jobs.buildable.time`          | The amount of time jobs in the build queue enter spend in buildable state.| `os.host`, `jenkins.job.name`,`jenkins.repo.name`, `jenkins.branch.name` |
+| `jenkins.jobs.waiting.time`            | The total amount of time that jobs spend in their quiet period.           | `os.host`, `jenkins.job.name`,`jenkins.repo.name`, `jenkins.branch.name` |
+| `jenkins.jobs.total.time`              | The time jobs spend from entering the build queue to completing building. | `os.host`, `jenkins.job.name`,`jenkins.repo.name`, `jenkins.branch.name` |
 
 ## Issue Tracking
 
