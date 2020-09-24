@@ -8,7 +8,11 @@ A Jenkins plugin for monitoring Jenkins with [Sematext][8].
 
 ## Setup
 
-### Installation
+### Sematext App Creation
+
+To be able to see your Jenkins metrics you have to create [Sematext account][10] and [Sematext Jenkins App][9] if you didn't do this already.
+
+### Plugin Installation
 
 _This plugin requires Java 8 or newer._
 
@@ -20,7 +24,7 @@ This plugin can be installed from the [Update Center][2] (found at `Manage Jenki
 
   Continue below for configuration.
 
-### Plugin user interface
+### Plugin Configuration
 
 To configure your Sematext Plugin, navigate to the `Manage Jenkins -> Configure System` page in your Jenkins installation. Once there, scroll down to find the `Sematext Plugin` section:
 
@@ -82,3 +86,5 @@ Checkout the [contributing guidelines][6] before you submit an issue or a pull r
 [6]: https://github.com/jenkinsci/.github/blob/master/CONTRIBUTING.md
 [7]: https://raw.githubusercontent.com/sematext/sematext-jenkins-plugin/master/images/sematext-jenkins-plugin-ui.png
 [8]: https://sematext.com/
+[9]: https://sematext.com/docs/monitoring/#creating-monitoring-apps
+[10]: https://apps.sematext.com/ui/registration
