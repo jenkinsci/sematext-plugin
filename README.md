@@ -1,6 +1,6 @@
 # Jenkins Sematext Plugin
 
-A Jenkins plugin for monitoring Jenkins with [Sematext](https://sematext.com/).
+A Jenkins plugin for monitoring Jenkins with [Sematext][8].
 
 ![Jenkins Sematext Dashboard][3]
 
@@ -20,11 +20,13 @@ This plugin can be installed from the [Update Center][2] (found at `Manage Jenki
 
   Continue below for configuration.
 
-#### Plugin user interface
+### Plugin user interface
 
 To configure your Sematext Plugin, navigate to the `Manage Jenkins -> Configure System` page in your Jenkins installation. Once there, scroll down to find the `Sematext Plugin` section:
 
-##### Select Region to house your data 
+![Jenkins Sematext Plugin UI][7]
+
+#### Select Region to house your data 
 
 1. Select the radio button with **Sematext Region which you will use to house your data**. Which Region you specify here depends on the Region in which you created the Sematext Jenkins App - US or EU.
 2. (advanced) Paste your Receiver URL in the `Sematext Jenkins App Receiver URL`.  You can find the Receiver URL in the integration instructions for your Jenkins App in Sematext.  Test your Receiver URL by using the `Test URL` button.
@@ -78,3 +80,5 @@ Checkout the [contributing guidelines][6] before you submit an issue or a pull r
 [4]: https://github.com/jenkinsci/sematext-plugin/issues
 [5]: https://github.com/jenkinsci/sematext-plugin/blob/master/CHANGELOG.md
 [6]: https://github.com/jenkinsci/.github/blob/master/CONTRIBUTING.md
+[7]: https://raw.githubusercontent.com/sematext/sematext-jenkins-plugin/master/images/sematext-jenkins-plugin-ui.png
+[8]: https://sematext.com/
