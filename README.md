@@ -40,7 +40,7 @@ To configure your Sematext Plugin, navigate to the `Manage Jenkins -> Configure 
 
 ## Data collected
 
-This plugin collects the following [metrics](#metrics):
+This plugin collects the following [metrics](#metrics), more metrics will be collected by Sematext agent, full list [see here][11] :
 
 ### Metrics
 
@@ -88,3 +88,4 @@ Checkout the [contributing guidelines][6] before you submit an issue or a pull r
 [8]: https://sematext.com/
 [9]: https://sematext.com/docs/monitoring/#creating-monitoring-apps
 [10]: https://apps.sematext.com/ui/registration
+[11]: https://sematext.com/docs/integration/jenkins/
