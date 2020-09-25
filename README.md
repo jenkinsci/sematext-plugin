@@ -10,7 +10,12 @@ A Jenkins plugin for monitoring Jenkins with [Sematext][8].
 
 ### Sematext App Creation
 
-To be able to see your Jenkins metrics you have to create [Sematext Account][10] and [Sematext Jenkins App][9] if you didn't do this already.
+To be able to see your Jenkins metrics you have to create [Sematext Account][10] and [Sematext Jenkins App][9]
+if you didn't do this already. 
+
+### Sematext Agent Installation
+
+To be able to see your Infrastructure and Jenkins JVM metrics you have to install [Sematext Agent][12] 
 
 ### Plugin Installation
 
@@ -37,6 +42,7 @@ To configure your Sematext Plugin, navigate to the `Manage Jenkins -> Configure 
 3. Paste your App Token, also found in the intgration instructions for your Jenkins App in Sematext, in the `Sematext Jenkins App Token` textbox on the Jenkins configuration screen.
 4. Test your Sematext Jenkins App Token by using the `Test App Token` button on the Jenkins configuration screen directly below the App Token textbox.
 5. Save your configuration.
+
 
 ## Data collected
 
@@ -89,3 +95,4 @@ Checkout the [contributing guidelines][6] before you submit an issue or a pull r
 [9]: https://sematext.com/docs/monitoring/#creating-monitoring-apps
 [10]: https://apps.sematext.com/ui/registration
 [11]: https://sematext.com/docs/integration/jenkins/
+[12]: https://apps.sematext.com/ui/howto/Jenkins/overview
