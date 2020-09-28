@@ -86,11 +86,11 @@ Checkout the [contributing guidelines][6] before you submit an issue or a pull r
 
 [1]: https://plugins.jenkins.io/sematext
 [2]: https://wiki.jenkins-ci.org/display/JENKINS/Plugins#Plugins-Howtoinstallplugins
-[3]: https://raw.githubusercontent.com/sematext/sematext-jenkins-plugin/master/images/sematext-jenkins-dashboard.png
+[3]: https://raw.githubusercontent.com/jenkinsci/sematext-plugin/master/images/sematext-jenkins-dashboard.png
 [4]: https://github.com/jenkinsci/sematext-plugin/issues
 [5]: https://github.com/jenkinsci/sematext-plugin/blob/master/CHANGELOG.md
 [6]: https://github.com/jenkinsci/.github/blob/master/CONTRIBUTING.md
-[7]: https://raw.githubusercontent.com/sematext/sematext-jenkins-plugin/master/images/sematext-jenkins-plugin-ui.png
+[7]: https://raw.githubusercontent.com/jenkinsci/sematext-plugin/master/images/sematext-jenkins-plugin-ui.png
 [8]: https://sematext.com/
 [9]: https://sematext.com/docs/monitoring/#creating-monitoring-apps
 [10]: https://apps.sematext.com/ui/registration
