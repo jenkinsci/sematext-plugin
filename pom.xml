@@ -10,6 +10,7 @@
 
     <name>Sematext Plugin</name>
     <description>This plugin is used to forward metrics, events to your account at Sematext, automatically.</description>
+    <url>https://github.com/jenkinsci/sematext-plugin</url>
     <groupId>io.jenkins.plugins</groupId>
     <artifactId>sematext</artifactId>
     <version>0.1.0-SNAPSHOT</version>
@@ -30,6 +31,19 @@
             <comments>A business-friendly OSS license</comments>
         </license>
     </licenses>
+
+    <developers>
+        <developer>
+            <id>sematext</id>
+            <name>Sematext</name>
+            <email>support@sematext.com</email>
+        </developer>
+        <developer>
+            <id>wawanawna</id>
+            <name>Vladimir Tretyakov</name>
+            <email>vladimir.tretyakov@sematext.com</email>
+        </developer>
+    </developers>
 
     <dependencyManagement>
         <dependencies>
