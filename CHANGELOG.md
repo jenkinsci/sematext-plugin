@@ -1,6 +1,5 @@
 Changes
 =======
-# 0.1.0 / 2020-09-23
+# 1.0.2 / 2020-09-29
 ### Details
-
-### Changes
+Initial Release
