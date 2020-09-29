@@ -13,7 +13,7 @@
     <url>https://github.com/jenkinsci/sematext-plugin</url>
     <groupId>io.jenkins.plugins</groupId>
     <artifactId>sematext</artifactId>
-    <version>1.0.1-alpha</version>
+    <version>1.0.2-alpha-SNAPSHOT</version>
     <packaging>hpi</packaging>
 
     <properties>
@@ -49,7 +49,7 @@
         <connection>scm:git:git://github.com/jenkinsci/sematext-plugin.git</connection>
         <developerConnection>scm:git:git@github.com:jenkinsci/sematext-plugin.git</developerConnection>
         <url>https://github.com/jenkinsci/sematext-plugin/</url>
-        <tag>sematext-1.0.1-alpha</tag>
+        <tag>sematext-1.0.0-alpha</tag>
     </scm>
 
     <repositories>
