@@ -38,11 +38,6 @@
             <name>Sematext</name>
             <email>support@sematext.com</email>
         </developer>
-        <developer>
-            <id>wawanawna</id>
-            <name>Vladimir Tretyakov</name>
-            <email>vladimir.tretyakov@sematext.com</email>
-        </developer>
     </developers>
 
     <scm>
