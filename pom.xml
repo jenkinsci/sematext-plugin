@@ -44,7 +44,7 @@
         <connection>scm:git:git://github.com/jenkinsci/sematext-plugin.git</connection>
         <developerConnection>scm:git:git@github.com:jenkinsci/sematext-plugin.git</developerConnection>
         <url>https://github.com/jenkinsci/sematext-plugin/</url>
-        <tag>sematext-1.0.0-alpha</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <repositories>
