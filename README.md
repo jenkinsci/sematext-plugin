@@ -39,7 +39,7 @@ To configure your Sematext Plugin, navigate to the `Manage Jenkins -> Configure 
 
 1. Select the radio button with **Sematext Region which you will use to house your data**. Which Region you specify here depends on the Region in which you created the Sematext Jenkins App - US or EU.
 2. (advanced) Paste your Receiver URL in the `Sematext Jenkins App Receiver URL`.  You can find the Receiver URL in the integration instructions for your Jenkins App in Sematext.  Test your Receiver URL by using the `Test URL` button.
-3. Paste your App Token, also found in the intgration instructions for your Jenkins App in Sematext, in the `Sematext Jenkins App Token` textbox on the Jenkins configuration screen.
+3. Paste your Monitoring App Token, also found in the integration instructions for your Jenkins App in Sematext, in the `Sematext Jenkins App Token` textbox on the Jenkins configuration screen.
 4. Test your Sematext Jenkins App Token by using the `Test App Token` button on the Jenkins configuration screen directly below the App Token textbox.
 5. Save your configuration.
 
