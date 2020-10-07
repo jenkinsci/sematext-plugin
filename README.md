@@ -15,7 +15,7 @@ if you didn't do this already.
 
 ### Sematext Agent Installation
 
-To be able to see your Infrastructure and Jenkins JVM metrics simply install [Sematext Agent][12] 
+To be able to see your Infrastructure and Jenkins JVM metrics simply install the [Sematext Agent][12].  It's [open-sourced on Github][14] and you can customize the Jenkins integration to collect data you want and then build [custom dashboards][15] using that data. 
 
 ### Plugin Installation
 
@@ -97,3 +97,5 @@ Checkout the [contributing guidelines][6] before you submit an issue or a pull r
 [11]: https://sematext.com/docs/integration/jenkins/
 [12]: https://apps.sematext.com/ui/howto/Jenkins/overview
 [13]: https://sematext.com/docs/agents/sematext-agent/
+[14]: https://github.com/jenkinsci/sematext-plugin
+[15]: https://sematext.com/docs/dashboards/
