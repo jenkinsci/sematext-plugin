@@ -10,7 +10,7 @@ A Jenkins plugin for monitoring Jenkins with [Sematext][8].
 
 ### Sematext App Creation
 
-To be able to see your Jenkins metrics you just need create [Sematext Account][10] and [Sematext Jenkins App][9]
+To be able to see your Jenkins metrics you just need to create [Sematext Account][10] and [Sematext Jenkins App][9]
 if you didn't do this already. 
 
 ### Sematext Agent Installation
