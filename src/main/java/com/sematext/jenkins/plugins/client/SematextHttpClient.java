@@ -5,6 +5,7 @@ import com.sematext.jenkins.plugins.metrics.Metrics;
 import com.sematext.jenkins.plugins.utils.LogUtils;
 import hudson.ProxyConfiguration;
 import jenkins.model.Jenkins;
+import org.apache.commons.lang.StringUtils;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -65,6 +66,11 @@ public class SematextHttpClient {
       return false;
     }
 
+    if (!validToken()) {
+      logger.severe("Your client is not initialized properly, bad token " + metricsToken);
+      return false;
+    }
+
     List<String> metaInfoLines = metrics.stream()
         .map(m -> buildMetricsMetaInfoLine(metricsToken, m.asTags(), m.getKey())).collect(Collectors.toList());
 
@@ -72,9 +78,18 @@ public class SematextHttpClient {
         String.join(LINE_DELIMITER, metaInfoLines));
   }
 
+  private boolean validToken() {
+    return StringUtils.isNotBlank(metricsToken) && metricsToken.length() == 36;
+  }
+
   public boolean postMetrics(Map<String, String> tags, Map<String, Object> metrics) {
     if (!connectionValid) {
       logger.severe("Your client is not initialized properly");
+      return false;
+    }
+
+    if (!validToken()) {
+      logger.severe("Your client is not initialized properly, bad token " + metricsToken);
       return false;
     }
 
