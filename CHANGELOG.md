@@ -1,6 +1,12 @@
 Changes
 =======
 
+# 1.0.6 / 2021-01-27
+### Details
+* [FIX] Do not send data if token not specified.
+
+https://github.com/jenkinsci/sematext-plugin/compare/sematext-1.0.5...sematext-1.0.6
+
 # 1.0.5 / 2020-10-07
 ### Details
 Adjusted README.
