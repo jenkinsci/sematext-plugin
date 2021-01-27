@@ -9,7 +9,7 @@
     </parent>
 
     <name>Sematext Plugin</name>
-    <description>This plugin is used to forward metrics, events to your account at Sematext, automatically.</description>
+    <description>This plugin is used to forward metrics, events to your account at Sematext, automatically. </description>
     <url>https://github.com/jenkinsci/sematext-plugin</url>
     <groupId>io.jenkins.plugins</groupId>
     <artifactId>sematext</artifactId>
